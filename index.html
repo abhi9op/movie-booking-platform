@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook - Movie Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🎬 CineBook
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#movies">Movies</a>
+                <a href="#offers">Offers</a>
+                <a href="#about">About</a>
+            </div>
+
+            <div class="nav-right">
+                <button class="login-btn">Login</button>
+
+                <button class="menu-btn" onclick="toggleMenu()">
+                    ☰
+                </button>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="small-title">NOW SHOWING</p>
+
+            <h1>AVATAR:<br>FIRE AND ASH</h1>
+
+            <div class="movie-info">
+                ⭐ 8.7/10
+                <span>•</span>
+                Action
+                <span>•</span>
+                Sci-Fi
+                <span>•</span>
+                2h:45m
+            </div>
+
+            <p class="hero-text">
+                Experience the magic of cinema like never before.
+                Book your favourite movie and enjoy the show.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="bookMovie('Avatar: Fire and Ash')">
+                    🎟 Book Now
+                </button>
+
+                <button class="secondary-btn" onclick="openTrailer()">
+                    ▶ Watch Trailer
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Search Section -->
+    <section class="search-section">
+
+        <h2>Find Your Movie</h2>
+
+        <div class="search-box">
+
+            <div class="input-group">
+                <label>📍 City</label>
+                <select id="city">
+                    <option value="">Select City</option>
+                    <option>Bhagalpur</option>
+                    <option>Patna</option>
+                    <option>Delhi</option>
+                    <option>Mumbai</option>
+                    <option>Bangalore</option>
+                </select>
+            </div>
+
+
+            <div class="input-group">
+                <label>📅 Date</label>
+                <input type="date" id="date">
+            </div>
+
+
+            <div class="input-group">
+                <label>🎬 Movie</label>
+                <select id="movieSelect">
+                    <option value="">Select Movie</option>
+                    <option>Avatar: Fire and Ash</option>
+                    <option>Avengers: Endgame</option>
+                    <option>Interstellar</option>
+                    <option>Spider-Man</option>
+                    <option>Inception</option>
+                    <option>Joker</option>
+                </select>
+            </div>
+
+
+            <button class="search-btn" onclick="findMovie()">
+                Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Movies Section -->
+    <section class="movies-section" id="movies">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="section-small">EXPLORE</p>
+                <h2>Now Showing</h2>
+            </div>
+
+            <button class="view-all" onclick="showAllMovies()">
+                View All →
+            </button>
+
+        </div>
+
+
+        <!-- Movie Search -->
+        <div class="movie-search">
+            <input
+                type="text"
+                id="movieSearch"
+                placeholder="🔍 Search movies..."
+                onkeyup="searchMovies()"
+            >
+        </div>
+
+
+        <div class="movie-grid" id="movieGrid">
+
+
+            <!-- Movie 1 -->
+            <div class="movie-card" data-name="Avatar Fire and Ash">
+
+                <div class="poster">
+
+                    <div class="poster-image avatar">
+                        <span>AVATAR</span>
+                    </div>
+
+                    <div class="rating">
+                        ⭐ 8.7
+                    </div>
+
+                </div>
+
+                <div class="movie-details">
+
+                    <h3>Avatar: Fire and Ash</h3>
+
+                    <p>Action • Sci-Fi</p>
+
+                    <div class="card-bottom">
+
+                        <span>2h:45m</span>
+
+                        <button onclick="bookMovie('Avatar: Fire and Ash')">
+                            Book
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 2 -->
+            <div class="movie-card" data-name="Avengers Endgame">
+
+                <div class="poster">
+
+                    <div class="poster-image avengers">
+                        <span>AVENGERS</span>
+                    </div>
+
+                    <div class="rating">
+                        ⭐ 9.0
+                    </div>
+
+                </div>
+
+                <div class="movie-details">
+
+                    <h3>Avengers: Endgame</h3>
+
+                    <p>Action • Adventure</p>
+
+                    <div class="card-bottom">
+
+                        <span>3h:02m</span>
+
+                        <button onclick="bookMovie('Avengers: Endgame')">
+                            Book
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 3 -->
+            <div class="movie-card" data-name="Interstellar">
+
+                <div class="poster">
+
+                    <div class="poster-image interstellar">
+                        <span>INTERSTELLAR</span>
+                    </div>
+
+                    <div class="rating">
+                        ⭐ 8.9
+                    </div>
+
+                </div>
+
+                <div class="movie-details">
+
+                    <h3>Interstellar</h3>
+
+                    <p>Sci-Fi • Drama</p>
+
+                    <div class="card-bottom">
+
+                        <span>2h:49m</span>
+
+                        <button onclick="bookMovie('Interstellar')">
+                            Book
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 4 -->
+            <div class="movie-card" data-name="Spider Man">
+
+                <div class="poster">
+
+                    <div class="poster-image spiderman">
+                        <span>SPIDER-MAN</span>
+                    </div>
+
+                    <div class="rating">
+                        ⭐ 8.5
+                    </div>
+
+                </div>
+
+                <div class="movie-details">
+
+                    <h3>Spider-Man</h3>
+
+                    <p>Action • Fantasy</p>
+
+                    <div class="card-bottom">
+
+                        <span>2h:28m</span>
+
+                        <button onclick="bookMovie('Spider-Man')">
+                            Book
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 5 -->
+            <div class="movie-card" data-name="Inception">
+
+                <div class="poster">
+
+                    <div class="poster-image inception">
+                        <span>INCEPTION</span>
+                    </div>
+
+                    <div class="rating">
+                        ⭐ 8.8
+                    </div>
+
+                </div>
+
+                <div class="movie-details">
+
+                    <h3>Inception</h3>
+
+                    <p>Sci-Fi • Thriller</p>
+
+                    <div class="card-bottom">
+
+                        <span>2h:28m</span>
+
+                        <button onclick="bookMovie('Inception')">
+                            Book
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 6 -->
+            <div class="movie-card" data-name="Joker">
+
+                <div class="poster">
+
+                    <div class="poster-image joker">
+                        <span>JOKER</span>
+                    </div>
+
+                    <div class="rating">
+                        ⭐ 8.6
+                    </div>
+
+                </div>
+
+                <div class="movie-details">
+
+                    <h3>Joker</h3>
+
+                    <p>Crime • Drama</p>
+
+                    <div class="card-bottom">
+
+                        <span>2h:02m</span>
+
+                        <button onclick="bookMovie('Joker')">
+                            Book
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Offers -->
+    <section class="offers-section" id="offers">
+
+        <div class="offer-content">
+
+            <p class="section-small">SPECIAL OFFER</p>
+
+            <h2>Get 20% OFF</h2>
+
+            <p>
+                Book your first movie with CineBook and get
+                20% discount on your ticket.
+            </p>
+
+            <div class="coupon">
+                CINE20
+            </div>
+
+            <button class="primary-btn" onclick="copyCoupon()">
+                Copy Coupon
+            </button>
+
+        </div>
+
+        <div class="offer-icon">
+            🎟️
+        </div>
+
+    </section>
+
+
+    <!-- Why CineBook -->
+    <section class="features" id="about">
+
+        <div class="section-heading center">
+
+            <div>
+                <p class="section-small">WHY CINEBOOK?</p>
+                <h2>Enjoy More, Wait Less</h2>
+            </div>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div>🎟️</div>
+                <h3>Easy Booking</h3>
+                <p>
+                    Book your favourite movie in just a few clicks.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div>💺</div>
+                <h3>Choose Your Seat</h3>
+                <p>
+                    Select your favourite seat before watching the movie.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div>💳</div>
+                <h3>Secure Payment</h3>
+                <p>
+                    Simple and secure payment experience.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div>📱</div>
+                <h3>Digital Ticket</h3>
+                <p>
+                    Get your booking ticket instantly on your screen.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h2>🎬 CineBook</h2>
+
+                <p>
+                    Your one-stop destination for movie tickets.
+                </p>
+            </div>
+
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="#home">Home</a>
+                <a href="#movies">Movies</a>
+                <a href="#offers">Offers</a>
+                <a href="#about">About</a>
+            </div>
+
+
+            <div>
+                <h3>Contact</h3>
+
+                <p>📧 support@cinebook.com</p>
+                <p>📞 +91 98765 43210</p>
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 CineBook. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- Trailer Popup -->
+    <div class="modal" id="trailerModal">
+
+        <div class="modal-content">
+
+            <button class="close-btn" onclick="closeTrailer()">
+                ×
+            </button>
+
+            <div class="trailer-box">
+                ▶
+            </div>
+
+            <h2>Avatar: Fire and Ash</h2>
+
+            <p>
+                Trailer preview will be available here.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
