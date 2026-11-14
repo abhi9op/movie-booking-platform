@@ -1,0 +1,38 @@
+body {
+  font-family: "Space Mono", monospace;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.payment-box {
+  width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  border: 2px solid purple;
+  border-radius: 10px;
+}
+
+.note {
+  color: lightblue;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: purple;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-family: "Space Mono", monospace;
+  cursor: pointer;
+}
+
+a {
+  color: lightblue;
+}
+
+@media (max-width: 500px) {
+  .payment-box {
+    width: 90%;
+  }
+}

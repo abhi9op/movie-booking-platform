@@ -1,131 +1,41 @@
-// Mobile Menu
+var pricePerSeat = 220;
+var selectedSeats = [];
 
-function toggleMenu() {
+function selectSeat(seat) {
+  var rowName = seat.parentElement.querySelector(".row-label").innerHTML;
+  var seatName = rowName + seat.innerHTML;
+  var seatIndex = selectedSeats.indexOf(seatName);
 
-    const navLinks = document.getElementById("navLinks");
+  if (seatIndex === -1) {
+    selectedSeats.push(seatName);
+    seat.classList.add("selected");
+  } else {
+    selectedSeats.splice(seatIndex, 1);
+    seat.classList.remove("selected");
+  }
 
-    navLinks.classList.toggle("active");
-
+  updateSelection();
 }
 
+function updateSelection() {
+  var result = document.getElementById("result");
+  var price = document.getElementById("price");
 
-// Book Movie
+  if (selectedSeats.length === 0) {
+    result.innerHTML = "Selected seats: None";
+  } else {
+    result.innerHTML = "Selected seats: " + selectedSeats.join(", ");
+  }
 
-function bookMovie(movieName) {
-
-    alert(
-        "You selected: " + movieName +
-        "\n\nNext step: Select Cinema and Show Time."
-    );
-
+  price.innerHTML = "Total: ₹" + (selectedSeats.length * pricePerSeat);
 }
 
-
-// Search Movies
-
-function searchMovies() {
-
-    const searchText =
-        document.getElementById("movieSearch").value.toLowerCase();
-
-    const movies =
-        document.querySelectorAll(".movie-card");
-
-    movies.forEach(function(movie) {
-
-        const movieName =
-            movie.getAttribute("data-name").toLowerCase();
-
-        if (movieName.includes(searchText)) {
-
-            movie.style.display = "block";
-
-        } else {
-
-            movie.style.display = "none";
-
-        }
-
-    });
-
-}
-
-
-// Find Movie
-
-function findMovie() {
-
-    const city =
-        document.getElementById("city").value;
-
-    const date =
-        document.getElementById("date").value;
-
-    const movie =
-        document.getElementById("movieSelect").value;
-
-
-    if (city === "" || date === "" || movie === "") {
-
-        alert("Please select City, Date and Movie.");
-
-        return;
-
-    }
-
-
-    alert(
-        "Searching for:\n\n" +
-        movie +
-        "\nCity: " +
-        city +
-        "\nDate: " +
-        date
-    );
-
-}
-
-
-// Trailer
-
-function openTrailer() {
-
-    document.getElementById("trailerModal").style.display = "flex";
-
-}
-
-
-function closeTrailer() {
-
-    document.getElementById("trailerModal").style.display = "none";
-
-}
-
-
-// Copy Coupon
-
-function copyCoupon() {
-
-    navigator.clipboard.writeText("CINE20");
-
-    alert("Coupon code CINE20 copied!");
-
-}
-
-
-// View All Movies
-
-function showAllMovies() {
-
-    const movies =
-        document.querySelectorAll(".movie-card");
-
-    movies.forEach(function(movie) {
-
-        movie.style.display = "block";
-
-    });
-
-    document.getElementById("movieSearch").value = "";
-
+function payNow() {
+  if (selectedSeats.length === 0) {
+    alert("Please select a seat first.");
+  } else {
+    var total = selectedSeats.length * pricePerSeat;
+    window.location.href = "payment.html?seats=" +
+      selectedSeats.join("-") + "&total=" + total;
+  }
 }

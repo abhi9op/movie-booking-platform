@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+  <div class="payment-box">
+    <h1>Complete Payment</h1>
+    <p class="note">This is a demo page. No real payment will be made.</p>
+
+    <p>Seats: <span id="seats">No seats selected</span></p>
+    <p>Total: <span id="total">₹0</span></p>
+
+    <h2>Choose a payment method</h2>
+    <p><label><input type="radio" name="method" value="UPI" checked> UPI</label></p>
+    <p><label><input type="radio" name="method" value="Card"> Card</label></p>
+    <p><label><input type="radio" name="method" value="Wallet"> Wallet</label></p>
+
+    <button onclick="completePayment()">Pay Now</button>
+    <p id="message"></p>
+    <a href="seat.html.html">Go back to seats</a>
+  </div>
+
+  <script src="payment.js"></script>
+</body>
+</html>
