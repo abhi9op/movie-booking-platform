@@ -49,7 +49,7 @@ function completePayment() {
       "Please choose a payment method.";
   } else {
     document.getElementById("message").innerHTML =
-      "Demo payment successful using " + selectedMethod + ".";
-    alert("Demo payment successful!");
+      "Payment simulation successful using " + selectedMethod + ". No payment was processed.";
+    alert("Payment simulation complete. No payment was processed.");
   }
 }
