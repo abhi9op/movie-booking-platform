@@ -5,6 +5,17 @@ body {
   color: white;
 }
 
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 16px auto;
+}
+
+.site-nav a {
+  color: lightblue;
+}
+
 .screen {
   width: 80%;
   max-width: 500px;
@@ -39,6 +50,12 @@ body {
   border: 2px solid purple;
   border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.seat:not(.booked):hover {
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 0 10px lightblue;
 }
 
 .seat.selected {
@@ -114,16 +131,6 @@ body {
 #result,
 #price {
   font-size: 18px;
-}
-
-.pay-button {
-  padding: 10px 20px;
-  background-color: purple;
-  color: white;
-  border: 2px solid white;
-  border-radius: 5px;
-  font-family: "Space Mono", monospace;
-  cursor: pointer;
 }
 
 .payment-row {

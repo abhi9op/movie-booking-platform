@@ -6,6 +6,7 @@ body {
 }
 
 .payment-box {
+  box-sizing: border-box;
   width: 400px;
   margin: 60px auto;
   padding: 20px;
@@ -25,6 +26,14 @@ button {
   border-radius: 5px;
   font-family: "Space Mono", monospace;
   cursor: pointer;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  width: 140px;
+  padding: 8px;
+  border: 1px solid purple;
+  border-radius: 5px;
 }
 
 a {

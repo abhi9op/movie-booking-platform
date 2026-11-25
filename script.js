@@ -1,5 +1,26 @@
-var pricePerSeat = 220;
+var moviePrices = {
+  "Drishyam 3": 250,
+  "Resident Evil": 280,
+  "Prahar": 359,
+  "Street Fighter": 459,
+  "Avenger:Doomsday": 480,
+  "Avenger:Endgame Encore": 599,
+  "Ramayana": 400,
+  "Godzilla Minus Kong": 170
+};
 var selectedSeats = [];
+var movieName = new URLSearchParams(window.location.search).get("movie");
+var pricePerSeat = movieName && Object.prototype.hasOwnProperty.call(moviePrices, movieName)
+  ? moviePrices[movieName]
+  : 220;
+
+if (movieName) {
+  document.getElementById("movie-title").textContent = movieName;
+} else {
+  document.getElementById("movie-title").textContent = "a Movie";
+}
+document.getElementById("ticket-price").textContent =
+  "Price per seat: ₹" + pricePerSeat;
 
 function selectSeat(seat) {
   var rowName = seat.parentElement.querySelector(".row-label").innerHTML;
@@ -36,6 +57,7 @@ function payNow() {
   } else {
     var total = selectedSeats.length * pricePerSeat;
     window.location.href = "payment.html?seats=" +
-      selectedSeats.join("-") + "&total=" + total;
+      selectedSeats.join("-") + "&total=" + total +
+      (movieName ? "&movie=" + encodeURIComponent(movieName) : "");
   }
 }
